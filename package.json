@@ -4,7 +4,8 @@
   "description": "npm install --save-dev typescript",
   "main": "index.ts",
   "scripts": {
-    "dev": "npm install && nodemon index.ts"
+    "dev": "npm install && nodemon index.ts",
+    "start": "npm run dev"
   },
   "author": "",
   "license": "ISC",
