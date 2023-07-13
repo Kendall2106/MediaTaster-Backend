@@ -5,8 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "dev": "nodemon index.ts",
-    "start": "npm run dev",
-    "install": "npm install --omit=dev"
+    "start": "npm run dev"
   },
   "author": "",
   "license": "ISC",
