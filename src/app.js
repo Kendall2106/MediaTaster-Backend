@@ -1,8 +1,12 @@
 import express from 'express'
-import { pool } from './db.js'
 import {PORT} from './config.js'
-import Router from './routes/routes.config.js';
+import Router from './routes/routerMovie.js';
 import cors from 'cors';
+import RouterAnime from './routes/routerAnime.js';
+import RouterMovie from './routes/routerMovie.js';
+import RouterGame from './routes/routerGame.js';
+import RouterBook from './routes/routerBook.js';
+import RouterSerie from './routes/routerSerie.js';
 
 
 
@@ -34,8 +38,19 @@ app.use(function (req, res, next) {
 });
 
 app.use(express.json());
-const router = new Router();
-router.config(app);
+
+const routerMovie = new RouterMovie();
+const routerAnime = new RouterAnime();
+const routerGame = new RouterGame();
+const routerBook = new RouterBook();
+const routerSerie = new RouterSerie();
+
+
+routerMovie.config(app);
+routerAnime.config(app);
+routerGame.config(app);
+routerBook.config(app);
+routerSerie.config(app);
 
 app.listen(PORT)
 console.log('Server on port', PORT)

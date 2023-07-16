@@ -2,7 +2,7 @@
 import { pool } from "./dbContext/db.js";
 
 
-class DataMovie {
+class DataAnime {
   constructor() {
     this.init();
   }
@@ -10,10 +10,10 @@ class DataMovie {
   init() {
   }
 
-  async listMovie() {
-    const [rows] = await pool.query('Call sp_listMovie()');
+  async listAnime() {
+    const [rows] = await pool.query('Call sp_listAnime()');
     return rows;
   }
 }
 
-export default DataMovie;
+export default DataAnime;

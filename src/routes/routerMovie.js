@@ -1,8 +1,7 @@
-import express from 'express'
 import BusinessMovie from '../business/businessMovie.js';
 import bodyParser from 'body-parser';
 
-class Router {
+class RouterMovie {
     constructor() {
         this.businessMovie = new BusinessMovie();
     }
@@ -10,10 +9,10 @@ class Router {
     config(app) {
         app.use(bodyParser.json());
 
-        app.get('/', async (req, res) => {
+        app.get('/listMovie', async (req, res) => {
            res.json(await this.businessMovie.listMovie())  
           })
     }
 }
 
-export default Router;
+export default RouterMovie;
