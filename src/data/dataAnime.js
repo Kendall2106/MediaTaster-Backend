@@ -12,7 +12,7 @@ class DataAnime {
 
   async listAnime() {
     const [rows] = await pool.query('Call sp_listAnime()');
-    return rows;
+    return rows[0];
   }
 }
 

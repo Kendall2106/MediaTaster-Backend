@@ -11,7 +11,7 @@ class DataSerie {
 
   async listSerie() {
     const [rows] = await pool.query('Call sp_listSerie()');
-    return rows;
+    return rows[0];
   }
 }
 

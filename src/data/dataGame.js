@@ -11,7 +11,7 @@ class DataGame {
 
   async listGame() {
     const [rows] = await pool.query('Call sp_listGame()');
-    return rows;
+    return rows[0];
   }
 }
 

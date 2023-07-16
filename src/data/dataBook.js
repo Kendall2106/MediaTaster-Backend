@@ -11,7 +11,7 @@ class DataBook {
 
   async listBook() {
     const [rows] = await pool.query('Call sp_listBook()');
-    return rows;
+    return rows[0];
   }
 }
 

@@ -12,7 +12,7 @@ class DataMovie {
 
   async listMovie() {
     const [rows] = await pool.query('Call sp_listMovie()');
-    return rows;
+    return rows[0];
   }
 }
 
