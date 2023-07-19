@@ -1,4 +1,5 @@
 import express from 'express'
+import bodyParser from 'body-parser';
 import {PORT} from './config.js'
 import Router from './routes/routerMovie.js';
 import cors from 'cors';
@@ -7,10 +8,14 @@ import RouterMovie from './routes/routerMovie.js';
 import RouterGame from './routes/routerGame.js';
 import RouterBook from './routes/routerBook.js';
 import RouterSerie from './routes/routerSerie.js';
+import RouterTypeMedia from './routes/routerTypeMedia.js';
 
 
 
 const app = express()
+
+
+
 app.use(cors());
 
 /*app.get('/', async (req, res) => {
@@ -29,21 +34,18 @@ app.get('/create', async (req, res) => {
 })*/
 
 
-app.use(function (req, res, next) {
-  if (req.method === 'OPTIONS') {
-      return res.sendStatus(200);
-  } else {
-      return next();
-  }
-});
+
 
 app.use(express.json());
+
+
 
 const routerMovie = new RouterMovie();
 const routerAnime = new RouterAnime();
 const routerGame = new RouterGame();
 const routerBook = new RouterBook();
 const routerSerie = new RouterSerie();
+const routerTypeMedia = new RouterTypeMedia();
 
 
 routerMovie.config(app);
@@ -51,6 +53,7 @@ routerAnime.config(app);
 routerGame.config(app);
 routerBook.config(app);
 routerSerie.config(app);
+routerTypeMedia.config(app);
 
 app.listen(PORT)
 console.log('Server on port', PORT)

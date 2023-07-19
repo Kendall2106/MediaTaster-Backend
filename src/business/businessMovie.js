@@ -8,6 +8,14 @@ class BusinessMovie {
   async listMovie() {
     return await this.dataMovie.listMovie();
   }
+
+  async listMedia() {
+    return await this.dataMovie.listMedia();
+  }
+
+  async registerMovie(name, date, score, type){
+    return await this.dataMovie.registerMovie(name, date, score, type);
+  }
 }
 
 export default BusinessMovie;

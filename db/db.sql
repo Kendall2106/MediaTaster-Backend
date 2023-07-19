@@ -107,3 +107,137 @@ END //
 DELIMITER ;
 
 
+
+CREATE PROCEDURE sp_listMedia()
+BEGIN
+    SELECT id, media.name AS media_name, score, date, type.name AS type_name ,image FROM media JOIN type ON media.idType = type.idType WHERE score = 5;
+END //
+
+DELIMITER ;
+
+
+
+DELIMITER //
+CREATE PROCEDURE sp_registerAnime(
+  IN p_name VARCHAR(255),
+  IN p_date DATE,
+  IN p_score iNT,
+  IN p_type INT,
+  IN p_temp INT
+)
+BEGIN
+  
+  DECLARE lastMediaId INT;
+
+  INSERT INTO media (idType, name, image, score, date)
+  VALUES (p_type, p_name, 'nop', p_score, p_date);
+
+  SET lastMediaId = LAST_INSERT_ID();
+
+  INSERT INTO anime (idAnime, Temp)
+  VALUES (lastMediaId, p_temp);
+
+END //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE sp_registerBook(
+  IN p_name VARCHAR(255),
+  IN p_date DATE,
+  IN p_score iNT,
+  IN p_type INT,
+  IN p_pages INT
+)
+BEGIN
+  
+  DECLARE lastMediaId INT;
+
+  INSERT INTO media (idType, name, image, score, date)
+  VALUES (p_type, p_name, 'nop', p_score, p_date);
+
+  SET lastMediaId = LAST_INSERT_ID();
+
+  INSERT INTO book (idBook, pages)
+  VALUES (lastMediaId, p_pages);
+
+END //
+DELIMITER ;
+
+
+
+DELIMITER //
+CREATE PROCEDURE sp_registerGame(
+  IN p_name VARCHAR(255),
+  IN p_date DATE,
+  IN p_score iNT,
+  IN p_type INT,
+  IN p_hours INT
+)
+BEGIN
+  
+  DECLARE lastMediaId INT;
+
+  INSERT INTO media (idType, name, image, score, date)
+  VALUES (p_type, p_name, 'nop', p_score, p_date);
+
+  SET lastMediaId = LAST_INSERT_ID();
+
+  INSERT INTO game (idGame, hours)
+  VALUES (lastMediaId, p_hours);
+
+END //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE sp_registerMovie(
+  IN p_name VARCHAR(255),
+  IN p_date DATE,
+  IN p_score iNT,
+  IN p_type INT
+)
+BEGIN
+  
+  DECLARE lastMediaId INT;
+
+  INSERT INTO media (idType, name, image, score, date)
+  VALUES (p_type, p_name, 'nop', p_score, p_date);
+
+  SET lastMediaId = LAST_INSERT_ID();
+
+  INSERT INTO movie (idMovie)
+  VALUES (lastMediaId);
+
+END //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE sp_registerSerie(
+  IN p_name VARCHAR(255),
+  IN p_date DATE,
+  IN p_score iNT,
+  IN p_type INT,
+  IN p_temp INT
+)
+BEGIN
+  
+  DECLARE lastMediaId INT;
+
+  INSERT INTO media (idType, name, image, score, date)
+  VALUES (p_type, p_name, 'nop', p_score, p_date);
+
+  SET lastMediaId = LAST_INSERT_ID();
+
+  INSERT INTO serie (idSerie, Temp)
+  VALUES (lastMediaId, p_temp);
+
+END //
+DELIMITER ;
+
+
+
+
+
+select * from media where score = 5

@@ -13,6 +13,15 @@ class DataBook {
     const [rows] = await pool.query('Call sp_listBook()');
     return rows[0];
   }
+
+  async registerBook(name, date, score, type, pages) {
+    try {
+      await pool.query('Call sp_registerBook("'+name+'","' +date+'",'+score+','+type+','+pages+')');
+      return 'Libro Registrado';
+    } catch (error) {
+      return 'error';
+    }
+  }
 }
 
 export default DataBook;

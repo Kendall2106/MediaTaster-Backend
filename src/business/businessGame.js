@@ -8,6 +8,10 @@ class BusinessGame {
   async listGame() {
     return await this.dataGame.listGame();
   }
+
+  async registerGame(name, date, score, type, hours){
+    return await this.dataGame.registerGame(name, date, score, type, hours);
+  }
 }
 
 export default BusinessGame;

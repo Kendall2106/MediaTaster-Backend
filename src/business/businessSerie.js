@@ -8,6 +8,10 @@ class BusinessSerie {
   async listSerie() {
     return await this.dataSerie.listSerie();
   }
+
+  async registerSerie(name, date, score, type, temp){
+    return await this.dataSerie.registerSerie(name, date, score, type, temp);
+  }
 }
 
 export default BusinessSerie;
