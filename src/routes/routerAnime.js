@@ -1,5 +1,5 @@
 import BusinessAnime from '../business/businessAnime.js';
-import bodyParser from 'body-parser';
+import multer from 'multer';
 
 class RouterAnime {
     constructor() {
@@ -7,22 +7,19 @@ class RouterAnime {
     }
 
     config(app) {
-        
-        app.use(bodyParser.json());
-        app.use(bodyParser.urlencoded({ extended: true }));
+        const upload = multer();
 
         app.get('/listAnime', async (req, res) => {
            res.json(await this.businessAnime.listAnime())  
           });
 
-        app.post('/registerAnime', async (req, res) => {
-            console.log(req.query);
-            const postData = req.query;
+        app.post('/registerAnime', upload.none(), async (req, res) => {
+            console.log(req.body);
+            const postData = req.body;
             res.json(await this.businessAnime.registerAnime(postData.name, postData.date, postData.score, postData.type, postData.temp));
             
         });
-
-        
+     
     }
 }
 

@@ -1,4 +1,4 @@
-import bodyParser from 'body-parser';
+import multer from 'multer';
 import BusinessSerie from '../business/businessSerie.js';
 
 class RouterSerie {
@@ -7,16 +7,15 @@ class RouterSerie {
     }
 
     config(app) {
-        app.use(bodyParser.json());
-        app.use(bodyParser.urlencoded({ extended: true }));
+        const upload = multer();
 
         app.get('/listSerie', async (req, res) => {
            res.json(await this.BusinessSerie.listSerie())  
           });
 
-          app.post('/registerSerie', async (req, res) => {
-            console.log(req.query);
-            const postData = req.query;
+          app.post('/registerSerie', upload.none(), async (req, res) => {
+            console.log(req.body);
+            const postData = req.body;
             res.json(await this.BusinessSerie.registerSerie(postData.name, postData.date, postData.score, postData.type, postData.temp));
             
         });

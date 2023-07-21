@@ -1,5 +1,5 @@
 import BusinessGame from '../business/businessGame.js';
-import bodyParser from 'body-parser';
+import multer from 'multer';
 
 class RouterGame {
     constructor() {
@@ -7,19 +7,19 @@ class RouterGame {
     }
 
     config(app) {
-        app.use(bodyParser.json());
-        app.use(bodyParser.urlencoded({ extended: true }));
+        const upload = multer();
 
         app.get('/listGame', async (req, res) => {
            res.json(await this.BusinessGame.listGame())  
           });
 
-          app.post('/registerGame', async (req, res) => {
-            console.log(req.query);
-            const postData = req.query;
+          app.post('/registerGame', upload.none(), async (req, res) => {
+            console.log(req.body);
+            const postData = req.body;
             res.json(await this.BusinessGame.registerGame(postData.name, postData.date, postData.score, postData.type, postData.hours));
             
         });
+
     }
 }
 

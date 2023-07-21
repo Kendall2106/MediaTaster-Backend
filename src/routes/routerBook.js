@@ -1,5 +1,5 @@
 import BusinessBook from '../business/businessBook.js';
-import bodyParser from 'body-parser';
+import multer from 'multer';
 
 class RouterBook {
     constructor() {
@@ -7,16 +7,15 @@ class RouterBook {
     }
 
     config(app) {
-        app.use(bodyParser.json());
-        app.use(bodyParser.urlencoded({ extended: true }));
+        const upload = multer();
 
         app.get('/listBook', async (req, res) => {
            res.json(await this.BusinessBook.listBook())  
           });
 
-          app.post('/registerBook', async (req, res) => {
-            console.log(req.query);
-            const postData = req.query;
+          app.post('/registerBook', upload.none(), async (req, res) => {
+            console.log(req.body);
+            const postData = req.body;
             res.json(await this.BusinessBook.registerBook(postData.name, postData.date, postData.score, postData.type, postData.pages));
             
         });
