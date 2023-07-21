@@ -1,5 +1,5 @@
 import express from 'express'
-import bodyParser from 'body-parser';
+
 import {PORT} from './config.js'
 import Router from './routes/routerMovie.js';
 import cors from 'cors';
@@ -32,7 +32,6 @@ app.get('/create', async (req, res) => {
   const result = await pool.query('INSERT INTO users(name) VALUES ("John")')
   res.json(result)
 })*/
-
 
 
 

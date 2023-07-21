@@ -1,5 +1,8 @@
 import BusinessMovie from '../business/businessMovie.js';
-import bodyParser from 'body-parser';
+import multer from 'multer';
+
+
+
 
 class RouterMovie {
     constructor() {
@@ -7,8 +10,7 @@ class RouterMovie {
     }
 
     config(app) {
-        app.use(bodyParser.json());
-        app.use(bodyParser.urlencoded({ extended: true }));
+        const upload = multer();
 
         app.get('/listMovie', async (req, res) => {
            res.json(await this.businessMovie.listMovie())  
@@ -18,12 +20,13 @@ class RouterMovie {
             res.json(await this.businessMovie.listMedia())  
            });
 
-          app.post('/registerMovie', async (req, res) => {
-            console.log(req.query);
-            const postData = req.query;
+          app.post('/registerMovie', upload.none(), async (req, res) => {
+            console.log(req.body);
+            const postData = req.body;
             res.json(await this.businessMovie.registerMovie(postData.name, postData.date, postData.score, postData.type));
-            
         });
+
+    
     }
 }
 
