@@ -74,46 +74,42 @@ INSERT iNTO movie (`idMovie`) values (5),(14),(15);
 
 CREATE PROCEDURE sp_listAnime()
 BEGIN
-    SELECT idAnime, Temp, media.name AS media_name, score, date, type.name AS type_name ,image FROM anime JOIN media ON anime.idAnime = media.id JOIN type ON media.idType = type.idType;
-END //
+    SELECT idAnime, Temp, media.name AS media_name, score, date, type.name AS type_name ,image FROM anime JOIN media ON anime.idAnime = media.id JOIN type ON media.idType = type.idType ORDER BY idAnime DESC;
+END
 DELIMITER ;
 
 CREATE PROCEDURE sp_listBook()
 BEGIN
-    SELECT idBook, pages, media.name AS media_name, score, date, type.name AS type_name ,image FROM book JOIN media ON book.idBook = media.id JOIN type ON media.idType = type.idType;
-END //
+    SELECT idBook, pages, media.name AS media_name, score, date, type.name AS type_name ,image FROM book JOIN media ON book.idBook = media.id JOIN type ON media.idType = type.idType ORDER BY idBook DESC;
+END
 
 DELIMITER ;
 
 CREATE PROCEDURE sp_listGame()
 BEGIN
-    SELECT idGame, hours, media.name AS media_name, score, date, type.name AS type_name ,image FROM game JOIN media ON game.idGame = media.id JOIN type ON media.idType = type.idType;
-END //
+    SELECT idGame, hours, media.name AS media_name, score, date, type.name AS type_name ,image FROM game JOIN media ON game.idGame = media.id JOIN type ON media.idType = type.idType ORDER BY idGame DESC;
+END
 
 DELIMITER ;
 
 CREATE PROCEDURE sp_listMovie()
 BEGIN
-    SELECT idMovie, media.name AS media_name, score, date, type.name AS type_name ,image FROM movie JOIN media ON movie.idMovie = media.id JOIN type ON media.idType = type.idType;
-END //
+    SELECT idMovie, media.name AS media_name, score, date, type.name AS type_name ,image FROM movie JOIN media ON movie.idMovie = media.id JOIN type ON media.idType = type.idType ORDER BY idMovie DESC;
+END
 
+DELIMITER ;
+
+CREATE PROCEDURE sp_listMedia()
+BEGIN
+    SELECT id, media.name AS media_name, score, date, type.name AS type_name ,image FROM media JOIN type ON media.idType = type.idType WHERE score = 5 ORDER BY id DESC;
+END 
 DELIMITER ;
 
 CREATE PROCEDURE sp_listSerie()
 BEGIN
-    SELECT idSerie, Temp, media.name AS media_name, score, date, type.name AS type_name ,image FROM serie JOIN media ON serie.idSerie = media.id JOIN type ON media.idType = type.idType;
-END //
+    SELECT idSerie, Temp, media.name AS media_name, score, date, type.name AS type_name ,image FROM serie JOIN media ON serie.idSerie = media.id JOIN type ON media.idType = type.idType ORDER BY idSerie DESC;
+END
 
-DELIMITER ;
-
-
-
-CREATE PROCEDURE sp_listMedia()
-BEGIN
-    SELECT id, media.name AS media_name, score, date, type.name AS type_name ,image FROM media JOIN type ON media.idType = type.idType WHERE score = 5;
-END //
-
-DELIMITER ;
 
 
 
