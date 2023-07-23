@@ -22,6 +22,16 @@ class DataBook {
       return 'error';
     }
   }
+
+  async deleteBook(id) {
+    try {
+      await pool.query('Call sp_deleteBook('+id+')');
+      return 'Libro eliminado';
+    } catch (error) {
+      return 'error';
+    }
+  }
+
 }
 
 export default DataBook;

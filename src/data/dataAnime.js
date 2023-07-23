@@ -25,6 +25,17 @@ class DataAnime {
     }
   }
 
+  async deleteAnime(id) {
+    try {
+      await pool.query('Call sp_deleteAnime('+id+')');
+      return 'Anime eliminado';
+    } catch (error) {
+      return 'error';
+    }
+  }
+  
 }
+
+
 
 export default DataAnime;

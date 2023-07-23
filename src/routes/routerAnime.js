@@ -14,10 +14,13 @@ class RouterAnime {
           });
 
         app.post('/registerAnime', upload.none(), async (req, res) => {
-            console.log(req.body);
             const postData = req.body;
             res.json(await this.businessAnime.registerAnime(postData.name, postData.date, postData.score, postData.type, postData.temp));
-            
+        });
+
+        app.post('/deleteAnime', upload.none(), async (req, res) => {
+            const postData = req.body;
+            res.json(await this.businessAnime.deleteAnime(postData.id));
         });
      
     }

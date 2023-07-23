@@ -14,10 +14,13 @@ class RouterBook {
           });
 
           app.post('/registerBook', upload.none(), async (req, res) => {
-            console.log(req.body);
             const postData = req.body;
-            res.json(await this.BusinessBook.registerBook(postData.name, postData.date, postData.score, postData.type, postData.pages));
-            
+            res.json(await this.BusinessBook.registerBook(postData.name, postData.date, postData.score, postData.type, postData.pages));   
+        });
+
+        app.post('/deleteBook', upload.none(), async (req, res) => {
+            const postData = req.body;
+            res.json(await this.BusinessBook.deleteBook(postData.id));
         });
     }
 }

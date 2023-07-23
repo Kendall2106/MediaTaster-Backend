@@ -28,6 +28,16 @@ class DataMovie {
       return 'error';
     }
   }
+
+  async deleteMovie(id) {
+    try {
+      await pool.query('Call sp_deleteMovie('+id+')');
+      return 'Pelicula eliminada';
+    } catch (error) {
+      return 'error';
+    }
+  }
+
 }
 
 export default DataMovie;

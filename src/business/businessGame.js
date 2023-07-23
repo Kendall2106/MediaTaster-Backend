@@ -12,6 +12,11 @@ class BusinessGame {
   async registerGame(name, date, score, type, hours){
     return await this.dataGame.registerGame(name, date, score, type, hours);
   }
+
+  async deleteGame(id){
+    return await this.dataGame.deleteGame(id);
+  }
+
 }
 
 export default BusinessGame;

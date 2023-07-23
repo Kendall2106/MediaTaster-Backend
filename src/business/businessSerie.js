@@ -12,6 +12,10 @@ class BusinessSerie {
   async registerSerie(name, date, score, type, temp){
     return await this.dataSerie.registerSerie(name, date, score, type, temp);
   }
+
+  async deleteSerie(id){
+    return await this.dataSerie.deleteSerie(id);
+  }
 }
 
 export default BusinessSerie;

@@ -14,10 +14,13 @@ class RouterGame {
           });
 
           app.post('/registerGame', upload.none(), async (req, res) => {
-            console.log(req.body);
             const postData = req.body;
             res.json(await this.BusinessGame.registerGame(postData.name, postData.date, postData.score, postData.type, postData.hours));
-            
+        });
+
+        app.post('/deleteGame', upload.none(), async (req, res) => {
+            const postData = req.body;
+            res.json(await this.BusinessGame.deleteGame(postData.id));
         });
 
     }

@@ -21,9 +21,13 @@ class RouterMovie {
            });
 
           app.post('/registerMovie', upload.none(), async (req, res) => {
-            console.log(req.body);
             const postData = req.body;
             res.json(await this.businessMovie.registerMovie(postData.name, postData.date, postData.score, postData.type));
+        });
+
+        app.post('/deleteMovie', upload.none(), async (req, res) => {
+            const postData = req.body;
+            res.json(await this.businessMovie.deleteMovie(postData.id));
         });
 
     

@@ -14,10 +14,13 @@ class RouterSerie {
           });
 
           app.post('/registerSerie', upload.none(), async (req, res) => {
-            console.log(req.body);
             const postData = req.body;
             res.json(await this.BusinessSerie.registerSerie(postData.name, postData.date, postData.score, postData.type, postData.temp));
-            
+        });
+
+        app.post('/deleteSerie', upload.none(), async (req, res) => {
+            const postData = req.body;
+            res.json(await this.BusinessSerie.deleteSerie(postData.id));
         });
     }
 }

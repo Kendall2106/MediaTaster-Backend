@@ -22,6 +22,15 @@ class DataGame {
       return 'error';
     }
   }
+
+  async deleteGame(id) {
+    try {
+      await pool.query('Call sp_deleteGame('+id+')');
+      return 'Juego eliminado';
+    } catch (error) {
+      return 'error';
+    }
+  }
 }
 
 export default DataGame;

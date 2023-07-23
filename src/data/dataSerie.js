@@ -22,6 +22,16 @@ class DataSerie {
       return 'error';
     }
   }
+
+  async deleteSerie(id) {
+    try {
+      await pool.query('Call sp_deleteSerie('+id+')');
+      return 'Serie eliminada';
+    } catch (error) {
+      return 'error';
+    }
+  }
+
 }
 
 export default DataSerie;

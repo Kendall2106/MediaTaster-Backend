@@ -16,6 +16,10 @@ class BusinessMovie {
   async registerMovie(name, date, score, type){
     return await this.dataMovie.registerMovie(name, date, score, type);
   }
+
+  async deleteMovie(id){
+    return await this.dataMovie.deleteMovie(id);
+  }
 }
 
 export default BusinessMovie;
