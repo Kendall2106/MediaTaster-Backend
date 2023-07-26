@@ -8,6 +8,10 @@ class BusinessTypeMedia {
   async listType() {
     return await this.dataTypeMedia.listType();
   }
+
+  async registerType() {
+    return await this.dataTypeMedia.registerType();
+  }
 }
 
 export default BusinessTypeMedia;

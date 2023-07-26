@@ -13,6 +13,16 @@ class DataTypeMedia {
     const [rows] = await pool.query('select * from type');
     return rows;
   }
+
+  async registerType(name) {
+    try {
+      await pool.query('Call sp_registerType("'+name+'")');
+      return 'Tipo Registrado';
+    } catch (error) {
+      return 'error';
+    }
+  }
+
 }
 
 export default DataTypeMedia;
