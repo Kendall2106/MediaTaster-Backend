@@ -9,8 +9,8 @@ class BusinessTypeMedia {
     return await this.dataTypeMedia.listType();
   }
 
-  async registerType() {
-    return await this.dataTypeMedia.registerType();
+  async registerType(name) {
+    return await this.dataTypeMedia.registerType(name);
   }
 }
 
