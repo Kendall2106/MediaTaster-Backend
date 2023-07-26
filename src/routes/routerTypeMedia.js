@@ -14,9 +14,9 @@ class RouterTypeMedia {
            res.json(await this.BusinessTypeMedia.listType())  
           });
 
-          app.post('/registerType', upload.none(), async (req, res) => {
+        app.post('/registerType', upload.none(), async (req, res) => {
             const postData = req.body;
-            res.json(await this.BusinessSerie.registerType(postData.name));
+            res.json(await this.BusinessTypeMedia.registerType(postData.name));
         });
         
         }
